@@ -28,16 +28,21 @@ public class VanishingPeg : MonoBehaviour
 
         pegs[randomPeg].SetActive(false);
 
-        Invoke(nameof(ReAppear), 2f);
-
+        
     }
 
     void ReAppear()
     {
-        foreach (int i in disabled)
+        int i = disabled.Count;
+
+        int randomPeg = Random.Range(0, i);   
+
+        if (i > 0)
         {
-            pegs[i].SetActive(true);
+            pegs[disabled[randomPeg]].SetActive(true);
+            disabled.RemoveAt(randomPeg);
         }
+
     }
 
 }
