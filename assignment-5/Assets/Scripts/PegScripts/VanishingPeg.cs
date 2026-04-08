@@ -12,7 +12,7 @@ public class VanishingPeg : MonoBehaviour
     {
         pegs = GameObject.FindGameObjectsWithTag("Peg");
         InvokeRepeating(nameof(Vanish), 0f, 1f);
-        InvokeRepeating(nameof(ReAppear), 2f, 1f);
+        InvokeRepeating(nameof(ReAppear), 0f, 0.5f);
 
     }
 
@@ -27,21 +27,21 @@ public class VanishingPeg : MonoBehaviour
         int randomPeg = Random.Range(0, pegs.Length);
 
         pegs[randomPeg].SetActive(false);
+        disabled.Add(randomPeg);
 
-        
     }
 
     void ReAppear()
     {
-        int i = disabled.Count;
+        if (disabled.Count == 0) return;
 
-        int randomPeg = Random.Range(0, i);   
 
-        if (i > 0)
-        {
-            pegs[disabled[randomPeg]].SetActive(true);
+        int randomPeg = Random.Range(0, disabled.Count);   
+        int pegIndex = disabled[randomPeg];
+
+        pegs[pegIndex].SetActive(true);
             disabled.RemoveAt(randomPeg);
-        }
+        
 
     }
 
