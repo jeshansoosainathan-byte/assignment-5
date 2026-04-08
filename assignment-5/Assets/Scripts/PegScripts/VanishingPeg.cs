@@ -12,7 +12,7 @@ public class VanishingPeg : MonoBehaviour
     {
         pegs = GameObject.FindGameObjectsWithTag("Peg");
         InvokeRepeating(nameof(Vanish), 0f, 1f);
-        InvokeRepeating(nameof(ReAppear), 0f, 0.5f);
+        InvokeRepeating(nameof(ReAppear), 1f, 2f);
 
     }
 
