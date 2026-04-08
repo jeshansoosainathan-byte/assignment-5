@@ -11,8 +11,9 @@ public class VanishingPeg : MonoBehaviour
     void Start()
     {
         pegs = GameObject.FindGameObjectsWithTag("Peg");
-        InvokeRepeating(nameof(Vanish), 0f, 3f);
-         
+        InvokeRepeating(nameof(Vanish), 0f, 1f);
+        InvokeRepeating(nameof(ReAppear), 2f, 1f);
+
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class VanishingPeg : MonoBehaviour
 
         pegs[randomPeg].SetActive(false);
 
-        Invoke(nameof(ReAppear), 3f);
+        Invoke(nameof(ReAppear), 2f);
 
     }
 
