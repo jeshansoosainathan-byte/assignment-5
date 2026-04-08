@@ -4,6 +4,8 @@ public class PlayerScript : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public GameObject discPrefab;
+    private GameObject currentDisc = null;
+    public Camera camera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,7 +24,8 @@ public class PlayerScript : MonoBehaviour
         //drop disc
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(discPrefab, transform.position, Quaternion.identity);
+            currentDisc = Instantiate(discPrefab, transform.position, Quaternion.identity);
+             
         }
 
 
